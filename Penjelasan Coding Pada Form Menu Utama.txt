@@ -1,0 +1,57 @@
+Catatan Nama dan kegunaan dari fungsi yang ada di C# :
+
++) public static FormMenuUtama menu;: 
+-) Ini adalah deklarasi variabel menu yang merupakan instance dari kelas FormMenuUtama. Variabel ini dideklarasikan sebagai public dan static, yang berarti dapat diakses dari luar kelas tempat ia dideklarasikan, dan nilainya akan bersifat statis, artinya nilainya akan tetap ada dan dapat diakses tanpa perlu membuat instance baru dari kelas tersebut.
+
++) FormMenuUtama 
+-) adalah tipe kelas yang kemungkinan adalah suatu form dalam aplikasi Windows. Biasanya, nama "MenuUtama" menunjukkan bahwa ini adalah form utama dalam aplikasi.
+
++) MenuStrip mnstrip;: 
+-) Ini adalah deklarasi variabel mnstrip yang kemungkinan merupakan instance dari kelas MenuStrip. MenuStrip adalah komponen antarmuka pengguna (UI) yang digunakan untuk membuat menu navigasi dalam aplikasi Windows. Dengan deklarasi ini, Anda sedang mendeklarasikan variabel yang dapat digunakan untuk mengakses dan mengelola menu dalam suatu form.
+
+Deklarasi variabel tersebut memberikan Anda kemampuan untuk membuat dan mengelola objek menu dan form di dalam kode aplikasi Anda. Namun, dalam kedua deklarasi tersebut, kita hanya melihat deklarasi variabel tanpa inisialisasi atau penggunaan lebih lanjut. Untuk mengerti lebih lanjut tentang bagaimana variabel-variabel ini digunakan dalam konteks aplikasi Anda, Anda perlu melihat bagian lain dari kode yang mungkin menginisialisasi dan memanfaatkan variabel-variabel ini.
+
+==============================================================================
+
++) void frmLogin_FormClosed(object sender, FormClosedEventArgs e) 
+-) adalah suatu metode (atau fungsi) yang digunakan sebagai event handler untuk menangani peristiwa penutupan form. Pada dasarnya, metode ini akan dipanggil secara otomatis ketika form dengan nama "frmLogin" ditutup. Metode ini memiliki dua parameter:
+
+-- object sender: Parameter ini adalah objek yang merupakan sumber dari peristiwa penutupan form. Dalam konteks ini, sender akan merujuk pada instance dari form "frmLogin".
+
+-- FormClosedEventArgs e: Parameter ini berisi informasi tambahan tentang peristiwa penutupan form. Dalam hal ini, Anda dapat menggunakan parameter ini untuk memahami lebih lanjut tentang bagaimana form ditutup.
+
++) FormClosedEventHandler 
+-) adalah tipe delegat yang menunjuk pada metode yang memiliki parameter dengan tipe object sebagai sender dan FormClosedEventArgs sebagai argumen. Tipe delegat ini digunakan untuk mengikat metode event handler dengan peristiwa penutupan form.
+
+-- Jadi, ketika Anda mendefinisikan metode frmLogin_FormClosed dan menghubungkannya dengan event handler FormClosedEventHandler, Anda sebenarnya sedang menghubungkan metode tersebut untuk menangani peristiwa penutupan form.
+
+-- Penting untuk memiliki event handler seperti ini karena ketika sebuah form ditutup, Anda mungkin ingin melakukan beberapa tindakan bersih-bersih atau menyimpan data terakhir sebelum aplikasi benar-benar berakhir. Dengan menggunakan event handler, Anda dapat dengan mudah menetapkan apa yang harus dilakukan ketika form ditutup, memisahkan logika ini dari bagian lain dalam aplikasi Anda.
+
+==============================================================================
+
++) private void menuLogin_Click(object sender, EventArgs e): 
+-) Ini adalah deklarasi dari metode event handler. Ini memiliki dua parameter: object sender yang merupakan objek yang memicu peristiwa (dalam hal ini, item menu), dan EventArgs e yang berisi informasi tambahan tentang peristiwa. Namun, dalam kode yang Anda berikan, parameter e tidak digunakan.
+
++) if (frmLogin == null): 
+-) Ini adalah pengkondisian yang memeriksa apakah variabel frmLogin (mungkin adalah referensi ke form login) belum diinisialisasi. Jika frmLogin masih null, artinya form login belum pernah dibuat.
+
++) frmLogin = new FormLogin();: 
+-) Jika form login belum pernah dibuat (kondisi sebelumnya adalah true), baris ini akan membuat instance baru dari FormLogin dan menyimpannya dalam variabel frmLogin.
+
++) frmLogin.FormClosed += new FormClosedEventHandler(frmLogin_fromClosed);: 
+-) Di sini, Anda mengikat event handler frmLogin_fromClosed dengan peristiwa penutupan form frmLogin. Artinya, ketika form login ditutup, metode frmLogin_fromClosed akan dipanggil.
+
++) frmLogin.ShowDialog();: 
+-) Ini adalah metode untuk menampilkan form login sebagai dialog modal. Ini berarti sampai form login ditutup, interaksi dengan form lain dalam aplikasi akan diblokir.
+
++) else: 
+-) Ini adalah bagian dari pengkondisian yang akan dieksekusi jika frmLogin sudah ada (kondisi sebelumnya adalah false). Ini berarti form login sudah pernah dibuat dan sudah ditampilkan sebelumnya.
+
++) frmLogin.Activate();: 
+-) Jika form login sudah ada, baris ini akan mengaktifkan form login. Ini bermanfaat jika form login telah dibuka sebelumnya dan sekarang tersembunyi di belakang form lain. Pengaktifan ini akan membawa form login ke depan sehingga pengguna dapat berinteraksi dengannya.
+
+-- Jadi, secara keseluruhan, metode menuLogin_Click digunakan untuk menangani klik pada item menu yang memicu pembukaan form login. Jika form login belum ada, ia akan membuat form baru dan menghubungkan event handler untuk penanganan penutupan form. Jika form login sudah ada, ia akan mengaktifkan form yang sudah ada agar dapat berinteraksi dengan pengguna.
+
+
+
+
